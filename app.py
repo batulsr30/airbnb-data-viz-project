@@ -17,8 +17,6 @@ DARK_GREY = "#333333"
 
 # Load Dataset
 @st.cache_data
-# NEW CODE (Paste this):
-@st.cache_data
 def load_data():
     berlin_df = pd.read_csv("listings_Berlin.csv")
     london_df = pd.read_csv("listings_London.csv")
