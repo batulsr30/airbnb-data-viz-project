@@ -17,9 +17,19 @@ DARK_GREY = "#333333"
 
 # Load Dataset
 @st.cache_data
+# NEW CODE (Paste this):
+@st.cache_data
 def load_data():
-    # Make sure 'airbnb_data.csv' matches your actual file name
-    df = pd.read_csv("airbnb_data.csv")
+    berlin_df = pd.read_csv("listings_Berlin.csv")
+    london_df = pd.read_csv("listings_London.csv")
+
+    # Add city labels if they aren't in your CSVs already
+    if "city" not in berlin_df.columns:
+        berlin_df["city"] = "Berlin"
+    if "city" not in london_df.columns:
+        london_df["city"] = "London"
+
+    df = pd.concat([berlin_df, london_df], ignore_index=True)
     return df
 
 
